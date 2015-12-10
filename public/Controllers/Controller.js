@@ -35,6 +35,7 @@ function ($scope, $http) {
     };
    // $scope.addresslist =addresslist;
 
+
     $scope.remove = function(id) {
         console.log(id);
         $http.delete('/AddressBook/' + id).success(function(response) {
