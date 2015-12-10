@@ -35,4 +35,29 @@ function ($scope, $http) {
     };
    // $scope.addresslist =addresslist;
 
+    $scope.remove = function(id) {
+        console.log(id);
+        $http.delete('/AddressBook/' + id).success(function(response) {
+            refresh();
+        });
+    };
+
+    $scope.edit = function(id) {
+        console.log(id);
+        $http.get('/AddressBook/' + id).success(function(response) {
+            $scope.address = response;
+        });
+    };
+
+    $scope.update = function() {
+        console.log($scope.address._id);
+        $http.put('/AddressBook/' + $scope.address._id, $scope.address).success(function(response) {
+            refresh();
+        })
+    };
+
+    $scope.deselect = function() {
+        $scope.address = "";
+    }
+
 }]);

@@ -59,5 +59,33 @@ app.post('/AddressBook', function (req, res) {
     });
 });
 
+app.delete('/AddressBook/:id', function (req, res) {
+    var id = req.params.id;
+    console.log(id);
+    db.AddressBook.remove({_id: mongojs.ObjectId(id)}, function (err, doc) {
+        res.json(doc);
+    });
+});
+
+app.get('/AddressBook/:id', function (req, res) {
+    var id = req.params.id;
+    console.log(id);
+    db.AddressBook.findOne({_id: mongojs.ObjectId(id)}, function (err, doc) {
+        res.json(doc);
+    });
+});
+
+app.put('/AddressBook/:id', function (req, res) {
+    var id = req.params.id;
+    console.log(req.body.id);
+    db.AddressBook.findAndModify({
+            query: {_id: mongojs.ObjectId(id)},
+            update: {$set: {name: req.body.name, address: req.body.address, zip: req.body.zip}},
+            new: true}, function (err, doc) {
+            res.json(doc);
+        }
+    );
+});
+
 app.listen(3000);
 console.log("Server running on port 3000");

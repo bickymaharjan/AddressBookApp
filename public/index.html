@@ -43,12 +43,14 @@
                 <td>{{address.name}}</td>
                 <td>{{address.street}}</td>
                 <td>{{address.zip}}</td>
+                <td><button class="btn btn-danger" ng-click="remove(address._id)">Remove</button></td>
+                <td><button class="btn btn-warning" ng-click="edit(address._id)">Edit</button></td>
             </tr>
             </tbody>
         </table>
     </div>
 
-    <!--Testing github updates pushed in-->
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular.min.js"></script>
     <script src="Controllers/Controller.js"></script>
