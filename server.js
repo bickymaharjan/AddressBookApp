@@ -23,6 +23,7 @@ app.get('/AddressBook', function (req, res) {
         res.json(docs);
     });
 
+    //Hard coded entries for the people's addresses without using mongodb
     //person1 = {
     //    name: 'Anna',
     //    street: '111 Main st. apt 11',
